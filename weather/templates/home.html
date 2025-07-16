@@ -2,6 +2,30 @@
 
 {% block content %}
 
-<h1>TEST</h1>
+  <h1>Air Quality for {{ city|capfirst }}</h1>
+
+  {% if data %}
+    <p><strong>AQI:</strong> {{ data.aqi }}</p>
+    <p><strong>Main pollutant:</strong> {{ data.dominentpol }}</p>
+
+    <h2>Concentrations (μg/m³ or ppb)</h2>
+    <ul>
+      {% for pollutant, obj in data.iaqi.items %}
+        <li>{{ pollutant|upper }}: {{ obj.v }}</li>
+      {% endfor %}
+    </ul>
+
+    <h2>Forecast (next days PM₂.₅)</h2>
+    <ul>
+      {% for day in data.forecast.daily.pm25 %}
+        <li>{{ day.day }} — avg {{ day.avg }}, min {{ day.min }}, max {{ day.max }}</li>
+      {% endfor %}
+    </ul>
+
+    <p><em>Last update:</em> {{ data.time.iso }}</p>
+
+  {% else %}
+    <p>Sorry, no data available.</p>
+  {% endif %}
 
 {% endblock %}
