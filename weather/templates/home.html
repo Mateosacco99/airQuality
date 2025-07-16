@@ -2,9 +2,20 @@
 
 {% block content %}
 
-  <h1>Air Quality for {{ city|capfirst }}</h1>
+  <form method="get" class="mb-4">
+    <input
+      type="text"
+      name="city"
+      placeholder="Enter city"
+      value="{{ city }}"
+      class="form-control d-inline-block w-auto"
+    />
+    <button type="submit" class="btn btn-primary">Go</button>
+  </form>
 
+  <h1>Air Quality for {{ city|capfirst }}</h1>
   {% if data %}
+
     <p><strong>AQI:</strong> {{ data.aqi }}</p>
     <p><strong>Main pollutant:</strong> {{ data.dominentpol }}</p>
 

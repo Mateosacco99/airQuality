@@ -3,7 +3,7 @@ from .utils import fetch_aqi_data
 # Create your views here.
 
 def home(request):
-    city = request.GET.get("city", "beijing")
+    city = request.GET.get("city", "")
     data = fetch_aqi_data(city)
     return render(request, "home.html", {"data": data, "city": city})
 
