@@ -4,6 +4,7 @@
 
   <form method="get" class="mb-4">
     <input
+      Style="margin-left:20px; margin-top:20PX;"
       type="text"
       name="city"
       placeholder="Enter city"
@@ -13,30 +14,31 @@
     <button type="submit" class="btn btn-primary">Go</button>
   </form>
 
-  <h1>Air Quality for {{ city|capfirst }}</h1>
+  
   {% if data %}
+    <h1 Style="margin-left:20px; margin-top:20PX;">Air Quality for: {{ city|capfirst }}</h1>
 
-    <p><strong>AQI:</strong> {{ data.aqi }}</p>
-    <p><strong>Main pollutant:</strong> {{ data.dominentpol }}</p>
+    <p Style="margin-left:20px; margin-top:20PX;"><strong>AQI:</strong> {{ data.aqi }}</p>
+    <p Style="margin-left:20px; margin-top:20PX;"><strong>Main pollutant:</strong> {{ data.dominentpol }}</p>
 
-    <h2>Concentrations (μg/m³ or ppb)</h2>
-    <ul>
+    <h2 Style="margin-left:20px; margin-top:20PX;">Concentrations (μg/m³ or ppb)</h2>
+    <ul Style="margin-left:20px; margin-top:20PX;">
       {% for pollutant, obj in data.iaqi.items %}
         <li>{{ pollutant|upper }}: {{ obj.v }}</li>
       {% endfor %}
     </ul>
 
-    <h2>Forecast (next days PM₂.₅)</h2>
-    <ul>
+    <h2 Style="margin-left:20px; margin-top:20PX;">Forecast (next days PM₂.₅)</h2>
+    <ul Style="margin-left:20px; margin-top:20PX;">
       {% for day in data.forecast.daily.pm25 %}
         <li>{{ day.day }} — avg {{ day.avg }}, min {{ day.min }}, max {{ day.max }}</li>
       {% endfor %}
     </ul>
 
-    <p><em>Last update:</em> {{ data.time.iso }}</p>
+    <p Style="margin-left:20px; margin-top:20PX;"><em>Last update:</em> {{ data.time.iso }}</p>
 
   {% else %}
-    <p>Sorry, no data available.</p>
+    <p Style="margin-left:20px; margin-top:20PX;">Sorry, no data available.</p>
   {% endif %}
 
 {% endblock %}
