@@ -2,15 +2,10 @@
 
 {% block content %}
 
-  <form method="get" class="mb-4">
-    <input
-      Style="margin-left:20px; margin-top:20PX;"
-      type="text"
-      name="city"
-      placeholder="Enter city"
-      value="{{ city }}"
-      class="form-control d-inline-block w-auto"
-    />
+<div class="container py-5">
+  <form method="get" class="mb-4" Style="margin-left:20px; margin-top:20PX;">
+    <input type="text" name="city"  placeholder="City" value="{{ city }}" required>
+    <input type="text" name="area"  placeholder="Area (optional)" value="{{ area }}">
     <button type="submit" class="btn btn-primary">Go</button>
   </form>
 
@@ -40,5 +35,7 @@
   {% else %}
     <p Style="margin-left:20px; margin-top:20PX;">Sorry, no data available.</p>
   {% endif %}
+
+</div>
 
 {% endblock %}
